@@ -1,0 +1,35 @@
+{
+  "name": "chatjs",
+  "version": "1.0.0",
+  "description": "Learning package",
+  "main": "app.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "socket.io": "^2.3.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.7.5",
+    "@babel/preset-env": "^7.7.5",
+    "babel-loader": "^8.0.6",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10",
+    "webpack-node-externals": "^1.7.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rmdir /q dist && webpack --mode development",
+    "start": "node ./dist/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mateakos/feather.git"
+  },
+  "author": "Akos Mate",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mateakos/feather/issues"
+  },
+  "homepage": "https://github.com/mateakos/feather#readme"
+}
