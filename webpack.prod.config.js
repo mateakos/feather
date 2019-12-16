@@ -1,13 +1,15 @@
 const path = require('path')
+const { DefinePlugin } = require('webpack');
 const HtmlWebPackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const TerserPlugin = require('terser-webpack-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 
 module.exports = {
-    entry: {
-        servmainer: './src/index.js',
-    },
+    entry: [
+        '@babel/polyfill', 
+        './src/index.js'
+    ],
     output: {
         path: path.join(__dirname, 'dist'),
         publicPath: '/',
@@ -19,7 +21,7 @@ module.exports = {
     // Webpack 5 will likely come with one
     optimization: {
       minimizer: [
-          new UglifyJsPlugin({
+          new TerserPlugin({
               cache: true,
               parallel: true,
               sourceMap: true //set to true if you want JS source maps
@@ -49,16 +51,17 @@ module.exports = {
                 ]
             },
             {
-                test: /\.(png|svg|jpg|gif)$/,
+                test: /\.(png|svg|jpg|gif|woff|woff2|eot|ttf)$/,
                 use: [{loader: 'url-loader'}]
             },
             {
-                test: /\.css$/,
-                use: [MiniCssExtractPlugin.loader, 'css-loader']
+                test: /\.(css|sass|scss)$/,
+                use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
             }
         ]
     },
     plugins:[
+        new DefinePlugin({ SOCKET_HOST: '' }),
         new HtmlWebPackPlugin({
             template: './src/html/index.html',
             filename: './index.html',

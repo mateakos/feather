@@ -1,7 +1,5 @@
-import logMessage from './js/logger'
-import './css/style.css'
-
-logMessage('Welcome to Salesforce CTI')
+import './js/app';
+import './css/app.scss';
 
 // Needed for Hot Module Replacement
 if(typeof(module.hot) !== 'undefined') {

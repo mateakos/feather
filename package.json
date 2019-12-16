@@ -1,28 +1,45 @@
 {
-  "name": "chatjs",
+  "name": "confcall",
   "version": "1.0.0",
   "description": "Learning package",
+  "type": "module",
   "main": "index.js",
   "dependencies": {
+    "esm": "^3.2.25",
     "express": "^4.17.1",
+    "react": "^16.12.0",
     "socket.io": "^2.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.7.5",
+    "@babel/polyfill": "^7.7.0",
     "@babel/preset-env": "^7.7.5",
+    "@babel/preset-react": "^7.7.4",
+    "@material-ui/core": "^4.8.0",
     "babel-eslint": "^10.0.3",
     "babel-loader": "^8.0.6",
+    "bootstrap-sass": "^3.4.1",
+    "classnames": "^2.2.6",
     "css-loader": "^3.2.1",
     "eslint": "^6.7.2",
     "eslint-loader": "^3.0.3",
+    "eslint-plugin-react": "^7.17.0",
     "file-loader": "^5.0.2",
+    "font-awesome": "^4.7.0",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
     "jest": "^24.9.0",
+    "loadsh": "0.0.4",
     "mini-css-extract-plugin": "^0.8.0",
+    "node-sass": "^4.13.0",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
+    "proptypes": "^1.1.0",
+    "react-dom": "^16.12.0",
+    "sass": "^1.23.7",
+    "sass-loader": "^8.0.0",
+    "socket.io-client": "^2.3.0",
     "style-loader": "^1.0.1",
-    "uglifyjs-webpack-plugin": "^2.2.0",
+    "terser-webpack-plugin": "^2.3.0",
     "url-loader": "^3.0.0",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10",
@@ -31,16 +48,17 @@
     "webpack-node-externals": "^1.7.2"
   },
   "scripts": {
-    "test": "jest",
-    "coverage": "jest --coverage",
     "clean": "rmdir /q /s dist",
-    "builddev": "webpack --mode development --config webpack.server.config.js && webpack --mode development --config webpack.dev.config.js",
+    "coverage": "jest --coverage",
     "build": "webpack --mode production --config webpack.server.config.js && webpack --mode production --config webpack.prod.config.js",
-    "start": "node ./dist/server.js"
+    "builddev": "webpack --mode development --config webpack.server.config.js && webpack --mode development --config webpack.dev.config.js",
+    "debug": "node --inspect -r esm ./src/server/server-dev.js",
+    "start": "node ./dist/server.js",
+    "test": "jest"
   },
   "jest": {
     "moduleNameMapper": {
-      "\\.(css|less)$":"<rootDir>/__mocks__/styleMocks.js",
+      "\\.(css|less)$": "<rootDir>/__mocks__/styleMocks.js",
       "\\.(gif|ttf|eot|svg)$": "<rootDire>/__mocks__/fileMock.js"
     }
   },

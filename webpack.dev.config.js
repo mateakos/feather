@@ -1,11 +1,15 @@
 const path = require('path')
 const webpack = require('webpack')
+const { DefinePlugin } = require('webpack')
 const HtmlWebPackPlugin = require('html-webpack-plugin')
 
 module.exports = {
-    entry: {
-        main: ['webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000','./src/index.js']
-    },
+    entry: 
+     [
+        '@babel/polyfill',   
+        'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000',
+        './src/index.js'
+    ],
     output: {
         path: path.join(__dirname, 'dist'),
         publicPath: '/',
@@ -47,16 +51,17 @@ module.exports = {
                 ]
             },
             {
-                test: /\.css$/,
-                use: ['style-loader', 'css-loader']
+                test: /\.(css|sass|scss)$/,
+                use: ['style-loader', 'css-loader', 'sass-loader']
             },
             {
-                test: /\.(png|svg|jpg|gif)$/,
+                test: /\.(png|svg|jpg|gif|woff|woff2|eot|ttf)$/,
                 use: ['file-loader']
             }
         ]
     },
     plugins:[
+        new DefinePlugin({ SOCKET_HOST: JSON.stringify(`localhost:3001`) }),
         new HtmlWebPackPlugin({
             template: './src/html/index.html',
             filename: './index.html',
