@@ -1,5 +1,6 @@
 const path = require('path')
 const { DefinePlugin } = require('webpack');
+const regeneratorRuntime = require("regenerator-runtime");
 const HtmlWebPackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
