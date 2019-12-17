@@ -7,7 +7,7 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 
 module.exports = {
     entry: [
-        '@babel/polyfill', 
+        //'@babel/polyfill', 
         './src/index.js'
     ],
     output: {

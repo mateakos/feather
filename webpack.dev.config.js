@@ -6,7 +6,7 @@ const HtmlWebPackPlugin = require('html-webpack-plugin')
 module.exports = {
     entry: 
      [
-        '@babel/polyfill',   
+        //'@babel/polyfill',   
         'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000',
         './src/index.js'
     ],
