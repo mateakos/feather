@@ -10,7 +10,7 @@ class CallModal extends Component {
     acceptWithVideo(video) {
         const { callFrom, startCall } = this.props;
         const config = { audio: true, video };
-        return () => startCall(true, callFrom, config);
+        return () => startCall(false, callFrom, config);
     }
 
     render(){
