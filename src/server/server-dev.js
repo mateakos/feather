@@ -1,12 +1,13 @@
 import path from 'path';
 import express from 'express';
-import webpack from 'webpack';
-import webpackDevMiddleware from 'webpack-dev-middleware';
-import webpackHotMiddleware from 'webpack-hot-middleware';
-import config from '../../webpack.dev.config';
-
 import { createServer } from 'http';
 import io from './socket';
+
+var webpack = require('webpack');
+var webpackDevMiddleware =  require('webpack-dev-middleware');
+var webpackHotMiddleware = require('webpack-hot-middleware');
+var config = require('../../webpack.dev.config');
+
 
 const app = express(),
             DIST_DIR = __dirname,

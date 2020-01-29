@@ -33,7 +33,14 @@ class App extends Component {
         socket
         .on('init', data => this.setState({ clientId: data.id}))
         .on('request', data => this.setState({ callModal: 'active', callFrom: data.from }))
-        .on('call', (data) => { console.log(`Call from ${data.from}`)})
+        .on('call', (data) => { 
+            
+            if (data.sdp) {
+                console.debug(`Call from ${data.from} type: ${data.sdp.type}`);
+                this.pc.setRemoteDescription(data.sdp);
+                if (data.sdp.type === 'offer') this.pc.createAnswer();  
+            } else this.pc.addIceCandidate(data.candidate);
+        })
         .on('end', this.endCall.bind(this, false))
         .emit('init');
     }
@@ -46,7 +53,10 @@ class App extends Component {
             if (!isCaller) newState.callModal = '';
             this.setState(newState);
           })
-          .on('peerStream', src => this.setState({ peerSrc: src }))
+          .on('peerStream', src => {
+              console.debug(`Setting peerSrc ${src}`);
+              this.setState({ peerSrc: src });
+          })
           .start(isCaller, config);
     }
 

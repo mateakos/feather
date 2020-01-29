@@ -2,12 +2,13 @@ const path = require('path')
 const webpack = require('webpack')
 const { DefinePlugin } = require('webpack')
 const HtmlWebPackPlugin = require('html-webpack-plugin')
+const regeneratorRuntime = require("regenerator-runtime");
 
 module.exports = {
     entry: 
      [
         //'@babel/polyfill',   
-        'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000',
+        //'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000',
         './src/index.js'
     ],
     output: {
@@ -61,7 +62,7 @@ module.exports = {
         ]
     },
     plugins:[
-        new DefinePlugin({ SOCKET_HOST: JSON.stringify(`localhost:3001`) }),
+        new DefinePlugin({ SOCKET_HOST: JSON.stringify(`localhost:8080`) }),
         new HtmlWebPackPlugin({
             template: './src/html/index.html',
             filename: './index.html',

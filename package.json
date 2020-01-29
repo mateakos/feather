@@ -7,12 +7,14 @@
     "core-js": "^3.5.0",
     "esm": "^3.2.25",
     "express": "^4.17.1",
+    "loadsh": "0.0.4",
     "react": "^16.12.0",
     "regenerator-runtime": "^0.13.3",
     "socket.io": "^2.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.7.5",
+    "@babel/node": "^7.8.3",
     "@babel/preset-env": "^7.7.5",
     "@babel/preset-react": "^7.7.4",
     "@material-ui/core": "^4.8.0",
@@ -31,6 +33,7 @@
     "jest": "^24.9.0",
     "mini-css-extract-plugin": "^0.8.0",
     "node-sass": "^4.13.0",
+    "nodemon": "^2.0.2",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "proptypes": "^1.1.0",
     "react-dom": "^16.12.0",
@@ -50,9 +53,9 @@
     "clean": "rmdir /q /s dist",
     "coverage": "jest --coverage",
     "build": "webpack --mode production --config webpack.server.config.js && webpack --mode production --config webpack.prod.config.js",
-    "builddev": "webpack --mode development --config webpack.server.config.js && webpack --mode development --config webpack.dev.config.js",
-    "debug": "node --inspect -r esm ./src/server/server-dev.js",
-    "start": "node ./dist/server.js",
+    "debug": "node --inspect -r esm ./src/server/server.js",
+    "start": "nodemon --exec babel-node ./src/server/server.js",
+    "run:build": "node ./dist/server.js",
     "test": "jest"
   },
   "jest": {

@@ -5,6 +5,7 @@ class EventEmitter{
 
     emit(event, ...args){
         if (this.events[event]){
+            console.debug(`Emitting ${event}`);
             this.events[event].forEach(element => 
                 element(...args)
             );

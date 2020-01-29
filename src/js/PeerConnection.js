@@ -16,7 +16,10 @@ class PeerConnection extends EventEmitter {
             to: this.remotePartyId,
             candidate: event.candidate
         });
-        this.pc.onaddstrean = event => this.emit('peerStream', event.stream);
+        this.pc.onaddstream = (event) => { 
+            console.debug(`Stream added`);
+            this.emit('peerStream', event.stream);
+        }
         this.mediaDevice = new MediaDevice();
         this.remotePartyId = remotePartyId;
     }

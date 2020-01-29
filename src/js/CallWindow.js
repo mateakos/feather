@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'proptypes';
 import classnames from 'classnames';
-//import _ from 'lodash'
 
 class CallWindow extends Component {
     constructor(props){
@@ -28,16 +27,8 @@ class CallWindow extends Component {
             const { config, mediaDevice } = nextProps;
 
             for(let type in config){
-                //console.log(type.charAt(0).toUpperCase() + type.substring(1), config[type]);
                 mediaDevice.toggle(type.charAt(0).toUpperCase() + type.substring(1), config[type]);
              }
-
-            // config.forEach((conf, type) => 
-            // mediaDevice.toggle(function() { 
-            //     return type.charAt(0).toUpperCase() + type.substring(1) }, 
-            //     conf ));
-
-            //_.forEach(config, (conf, type) => mediaDevice.toggle(_.capitalize(type), conf));
 
             this.setState({
                 Video: config.video,
@@ -46,7 +37,7 @@ class CallWindow extends Component {
         }
     }
     
-    componentDidUpdate() {
+    componentDidUpdate() {     
         this.setMediaStream();
     }
 
@@ -68,7 +59,8 @@ class CallWindow extends Component {
     toggleMediaDevice(deviceType) {
         const { mediaDevice } = this.props;
         //const deviceState = _.get(this.state, deviceType);
-        const deviceState = this.state[deviceType];
+        const deviceState = this.getDeviceState(deviceType);
+        console.log(`Device type ${deviceType} state ${deviceState}`);
         this.setState({ [deviceType]: !deviceState });
         mediaDevice.toggle(deviceType);
     }
@@ -76,7 +68,7 @@ class CallWindow extends Component {
     renderControlButtons() {
         const getClass = (icon, type) => classnames(`btn-action fa ${icon}`, {
             //disable: !_.get(this.state, type)
-            disable: !this.state[type]
+            disable: !this.getDeviceState(type)
             });
 
         return this.btns.map(btn => (

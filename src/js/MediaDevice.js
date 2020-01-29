@@ -6,7 +6,8 @@ class MediaDevice extends EventEmmiter {
         const constraints = {
             video: {
                 facingMode: 'user',
-                height: { min: 360, ideal: 720, max: 1080 }
+                height: { min: 360, ideal: 720, max: 1080 },
+                frameRate: {min: 15, ideal: 30, max: 60 }
             },
             audio: true
         };
