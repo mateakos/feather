@@ -37,10 +37,10 @@ class MainWindow extends Component {
                             &nbsp;
                             <Divider />
                             <Container className="btn-container">
-                                <IconButton aria-label="Video" onClick={this.callWithVideo(true)}>
+                                <IconButton className="btn-action" aria-label="Video" onClick={this.callWithVideo(true)}>
                                     <i className="fa fa-video-camera" />
                                 </IconButton>
-                                <IconButton aria-label="Audio" onClick={this.callWithVideo(false)}>
+                                <IconButton className="btn-action" aria-label="Audio" onClick={this.callWithVideo(false)}>
                                     <i className="fa fa-phone" />
                                 </IconButton>
                             </Container>
