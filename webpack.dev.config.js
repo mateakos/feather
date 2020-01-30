@@ -62,7 +62,7 @@ module.exports = {
         ]
     },
     plugins:[
-        new DefinePlugin({ SOCKET_HOST: JSON.stringify(`localhost:8080`) }),
+        new DefinePlugin({ SOCKET_HOST: JSON.stringify(`localhost:8001`) }),
         new HtmlWebPackPlugin({
             template: './src/html/index.html',
             filename: './index.html',

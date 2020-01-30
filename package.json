@@ -54,8 +54,8 @@
     "coverage": "jest --coverage",
     "build": "webpack --mode production --config webpack.server.config.js && webpack --mode production --config webpack.prod.config.js",
     "debug": "node --inspect -r esm ./src/server/server.js",
-    "start": "nodemon --exec babel-node ./src/server/server.js",
-    "run:build": "node ./dist/server.js",
+    "watch": "nodemon --exec babel-node ./src/server/server.js",
+    "start": "node ./dist/server.js",
     "test": "jest"
   },
   "jest": {
